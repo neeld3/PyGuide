@@ -1,85 +1,153 @@
-PyGuide - Senior Design Project
-PyGuide is an interactive Python-learning web application designed to help students develop programming skills through structured lessons, code exercises, scoring, badges, and avatar progression. The system provides a friendly interface for beginners while also giving instructors an easy way to monitor user progress through a MySQL database. This project uses a Flask backend, a MySQL database hosted locally through XAMPP, and a clean web interface for interacting with lessons, profiles, and user data.
+# PyGuide
+> **Senior Design Project** — An interactive Python learning web application
 
-To make the project easy to run on any machine, the database is provided as an SQL file. When instructors or reviewers import this file into phpMyAdmin using XAMPP, the system automatically creates the necessary tables and inserts a sample admin account. Once the database is imported, running the backend Python file will start the entire application on a local server.
+PyGuide helps students develop programming skills through structured lessons, code exercises, scoring, badges, and avatar progression. Built with a Flask backend and MySQL database, it provides a beginner-friendly interface while giving instructors easy access to monitor user progress.
 
-Downloading Required Software
-Before running the PyGuide application, the following tools must be installed:
+---
 
-1. XAMPP (for MySQL + phpMyAdmin)
-XAMPP provides the MySQL database and the phpMyAdmin interface used by this project.
-Download it here:
-🔗 https://www.apachefriends.org/index.html
+## Table of Contents
 
-Choose the version for macOS, Windows, or Linux, depending on your system.
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Database Setup](#database-setup)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Usage](#usage)
+- [Demo Account](#demo-account)
 
-2. Python
-Ensure Python 3.10 or newer is installed on your computer.
-Download it here:
-🔗 https://www.python.org/downloads/
+---
 
-3. Git (optional, for cloning the repository)
-If you want to download the project directly through Git:
-🔗 https://git-scm.com/downloads
+## Overview
 
-Otherwise, you can download the project as a ZIP file from GitHub.
+PyGuide is designed for beginner programmers and their instructors. Students can:
+- Work through structured Python lessons
+- Submit code exercises and receive scores
+- Earn badges and unlock new avatars as they progress
+- Track their progress via a personal profile page
 
-Setting Up the Database (XAMPP + phpMyAdmin)
-After installing XAMPP, open the application and start the following services:
+Instructors can monitor all user data at any time through phpMyAdmin.
 
-MySQL Database
-Apache Web Server
-Once the servers are running, open your web browser and go to:
+---
 
-http://localhost/phpmyadmin
+## Tech Stack
 
-This will open phpMyAdmin, which allows you to manage MySQL databases visually.
+| Layer | Technology |
+|---|---|
+| Backend | Python / Flask |
+| Database | MySQL (via XAMPP) |
+| DB Management | phpMyAdmin |
+| ORM / DB Driver | SQLAlchemy, PyMySQL |
+| Auth | bcrypt |
 
-Inside phpMyAdmin, create a new database named:
+---
 
-pyguide
+## Prerequisites
 
-Next, import the provided SQL file included in this repository (named pyguide.sql). This file automatically creates the necessary tables — such as User and Lesson — and inserts a main test account used for demonstration and grading.
+Install the following before running PyGuide:
 
-Admin account included:
+### 1. XAMPP
+Provides the MySQL database and phpMyAdmin interface.
 
-Username: Mari
-Password: 123
-This account has full progress unlocked and can be used to showcase all features.
+🔗 [Download XAMPP](https://www.apachefriends.org/index.html)
 
-Downloading the Project Files
-Download as ZIP
-Go to the GitHub repository page.
-Click the green "Code" button.
-Select "Download ZIP".
-Extract the ZIP file to your computer.
-Open the folder in VS Code or any preferred development editor.
+Choose the version for your OS (macOS, Windows, or Linux).
 
-Installing Python Dependencies
+### 2. Python 3.10+
 
-Install required Python packages:
+🔗 [Download Python](https://www.python.org/downloads/)
 
+### 3. Git *(optional)*
+Only needed if you want to clone the repo via command line.
+
+🔗 [Download Git](https://git-scm.com/downloads)
+
+Otherwise, download the project as a ZIP from GitHub.
+
+---
+
+## Database Setup
+
+1. Open XAMPP and start both services:
+   - **MySQL Database**
+   - **Apache Web Server**
+
+2. Navigate to phpMyAdmin in your browser:
+   ```
+   http://localhost/phpmyadmin
+   ```
+
+3. Create a new database named:
+   ```
+   pyguide
+   ```
+
+4. Import the provided SQL file (`pyguide.sql`) from this repository.
+   - This will automatically create all required tables (e.g., `User`, `Lesson`) and insert the demo admin account.
+
+---
+
+## Installation
+
+**Option A — Download ZIP:**
+1. Click the green **Code** button on the GitHub repository page.
+2. Select **Download ZIP**.
+3. Extract the ZIP to your computer.
+4. Open the folder in VS Code or your preferred editor.
+
+**Option B — Clone via Git:**
+```bash
+git clone <repository-url>
+cd pyguide
+```
+
+**Install Python dependencies:**
+```bash
 pip install flask sqlalchemy pymysql bcrypt
+```
 
-Running the Application
+---
 
-The entire system is controlled by the backend Python file.
+## Running the App
 
-Inside the project directory, run:
+Make sure XAMPP is running with MySQL and Apache active, then start the backend:
 
+```bash
 python pyguide_backend.py
+```
 
-If everything is set up correctly, the terminal will display something like:
+You should see output like:
+```
+* Running on http://127.0.0.1:5000/
+```
 
-Running on http://127.0.0.1:5000/
-Copy this address into your web browser:
-
+Open your browser and go to:
+```
 http://127.0.0.1:5000/
+```
 
-This will launch the PyGuide interface, allowing you to register new users, log in, complete lessons, change avatars, and view achievements and scoring.
+---
 
-How to Use the Application
+## Usage
 
-Once the site is open, you may log in using the admin account (Mari / 123) or create a new user through the registration page. New accounts start at level one with beginner avatars and gradually unlock new avatars and badges as they progress through lessons. The profile page shows a user’s score, title, badges earned, and current avatar. The lesson system stores progress in the MySQL database, allowing users to pick up where they left off.
+Once the app is open:
 
-The instructor can verify user data at any time through phpMyAdmin by opening the User and Lesson tables.
+- **Log in** with the demo admin account or **register** a new user.
+- New accounts start at level 1 with beginner avatars.
+- Complete lessons to earn points, badges, and unlock new avatars.
+- The **profile page** displays your score, title, badges, and current avatar.
+- Lesson progress is saved to MySQL so users can pick up where they left off.
+- Instructors can verify user data anytime via phpMyAdmin (`User` and `Lesson` tables).
+
+---
+
+## Demo Account
+
+A fully unlocked admin account is included for demonstration and grading:
+
+| Field | Value |
+|---|---|
+| Username | `Mari` |
+| Password | `123` |
+
+This account has full progress unlocked and showcases all features of the application.
