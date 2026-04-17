@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 10: Handling Files and Exceptions in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 10: Handling Files and Exceptions in Python</h1>
+
+    <h3>Working with files in Python</h3>
+    <p>
+        Python lets you read from and write to files, such as <code>.txt</code> files. This is useful for saving data,
+        loading settings, logs, or any information you want to keep between runs of your program.
+    </p>
+
+    <h3>Opening a file</h3>
+    <p>
+        We use the built-in <code>open()</code> function. The second argument is the <b>mode</b>:
+    </p>
+    <ul>
+        <li><code>"r"</code>: read (file must exist)</li>
+        <li><code>"w"</code>: write (creates or overwrites the file)</li>
+        <li><code>"a"</code>: append (adds to the end of the file)</li>
+    </ul>
+
+    <h3>Reading from a file</h3>
+    <pre>
+# data.txt must already exist
+with open("data.txt", "r") as file:
+    content = file.read()
+    print(content)
+    </pre>
+
+    <h3>Writing to a file</h3>
+    <pre>
+# This will create or overwrite output.txt
+with open("output.txt", "w") as file:
+    file.write("Hello from Python!\n")
+    file.write("This line will be saved in the file.")
+    </pre>
+
+    <h3>Appending to a file</h3>
+    <pre>
+# This will add to the end of log.txt
+with open("log.txt", "a") as file:
+    file.write("New log entry\n")
+    </pre>
+
+    <h3>Basic error handling with try/except</h3>
+    <p>
+        Errors (called <b>exceptions</b>) can cause your program to crash. We can use <code>try</code> and <code>except</code>
+        to handle them gracefully.
+    </p>
+
+    <pre>
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("You tried to divide by zero, which is not allowed.")
+    </pre>
+
+    <h3>Common Python errors</h3>
+
+    <h4>1. ZeroDivisionError</h4>
+    <p>Happens when you divide by zero.</p>
+    <pre>
+try:
+    result = 5 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+    </pre>
+
+    <h4>2. TypeError</h4>
+    <p>Happens when you use the wrong type with an operation or function.</p>
+    <pre>
+try:
+    total = "5" + 3   # string + integer is not allowed
+except TypeError:
+    print("TypeError: You mixed incompatible types.")
+    </pre>
+
+    <h4>3. FileNotFoundError</h4>
+    <p>Happens when you try to open a file that does not exist in the given path.</p>
+    <pre>
+try:
+    with open("missing_file.txt", "r") as file:
+        data = file.read()
+except FileNotFoundError:
+    print("File not found. Please check the file name or path.")
+    </pre>
+
+    <h4>4. ValueError</h4>
+    <p>Happens when a value has the right type, but an invalid format.</p>
+    <pre>
+user_input = "abc"
+
+try:
+    number = int(user_input)   # "abc" cannot be converted to int
+except ValueError:
+    print("ValueError: Please enter a valid number.")
+    </pre>
+
+    <h3>Combining file handling and error handling</h3>
+    <pre>
+filename = "scores.txt"
+
+try:
+    with open(filename, "r") as file:
+        for line in file:
+            score = int(line.strip())
+            print("Score:", score)
+except FileNotFoundError:
+    print(f"{filename} was not found.")
+except ValueError:
+    print("Found a line in the file that is not a valid number.")
+    </pre>
+
+    <p>
+        By combining file operations with proper error handling, your programs become more reliable
+        and user-friendly, even when something goes wrong.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 24 -->
+    <a href="/lesson/24/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

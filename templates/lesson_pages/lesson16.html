@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 2: Variables in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 2: Variables in Python</h1>
+
+    <h3>What is a variable?</h3>
+    <p>
+        A variable is a container that stores a value in memory. It allows us to save data
+        and use it later in our program. You can think of a variable as a labeled box
+        where we can put information.
+    </p>
+
+    <pre>
+name = "Alex"
+age = 17
+score = 95.5
+
+print(name, age, score)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Alex 17 95.5
+    </pre>
+
+    <h3>Variable naming rules</h3>
+    <ul>
+        <li>Names must start with a letter or underscore</li>
+        <li>They cannot start with a number</li>
+        <li>They cannot contain spaces or special characters like <code>@</code>, <code>$</code>, <code>%</code></li>
+        <li>They are case-sensitive (<code>Age</code> and <code>age</code> are different)</li>
+        <li>Use descriptive names to keep programs readable</li>
+    </ul>
+
+    <pre>
+userName = "John"
+username = "Jane"
+# These are NOT the same
+    </pre>
+
+    <h3>Changing variable values</h3>
+    <p>Variables can be updated by reassigning them to new values.</p>
+    <pre>
+count = 5
+count = count + 1
+print(count)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+6
+    </pre>
+
+    <h3>Different data types in variables</h3>
+    <p>Variables can store many types of data.</p>
+    <pre>
+text = "Hello"       # string
+number = 42          # integer
+decimal = 3.14       # float
+status = True        # boolean
+    </pre>
+
+    <h3>Checking variable type</h3>
+    <pre>
+value = 10
+print(type(value))    # shows the data type
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+int
+    </pre>
+
+    <h3>Multiple variable assignment</h3>
+    <pre>
+x, y, z = 1, 2, 3
+print(x, y, z)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+1 2 3
+    </pre>
+
+    <h3>Swapping values</h3>
+    <pre>
+a = 10
+b = 20
+
+a, b = b, a
+print(a, b)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+20 10
+    </pre>
+
+    <h3>Constants</h3>
+    <p>
+        Python does not enforce constants, but by convention we use uppercase names
+        to indicate values that should not change.
+    </p>
+    <pre>
+PI = 3.14159
+MAX_SPEED = 120
+    </pre>
+
+    <h3>Why variables matter</h3>
+    <p>
+        Without variables, programs cannot store user input, keep track of progress,
+        perform calculations, or remember information. Variables are the foundation of
+        every program, making them essential to learn before moving into more complex topics.
+    </p>
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 16 -->
+    <a href="/lesson/16/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

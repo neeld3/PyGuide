@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--lesson 7 from level 2, so it's lesson 12-->
+<html>
+<head>
+    <title>Lesson 7: Working with Lists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 7: Working with Lists</h1>
+
+    <p>
+        Lists in Python are used to store multiple items in a single variable.  
+        You can think of a list like a row of boxes, each holding a piece of information.  
+        Lists are very helpful when you want to keep track of many related things at once.<br><br>
+
+        We make a list by putting items inside square brackets <code>[]</code>, separated by commas.
+    </p>
+
+    <pre>
+numbers = [1, 2, 3, 4]
+fruits = ["apple", "banana", "grape"]
+mixedList = ["hello", 3, True]
+    </pre>
+
+    <p>
+        Just like strings, lists have <strong>indexes</strong>.  
+        Indexing lets us look at a specific item in the list.
+        Remember: indexing starts at 0!
+    </p>
+
+    <pre>
+fruits = ["apple", "banana", "grape"]
+
+firstFruit = fruits[0]    # "apple"
+secondFruit = fruits[1]   # "banana"
+lastFruit = fruits[-1]    # "grape"
+    </pre>
+
+    <p>
+        We can also change items in a list.  
+        Unlike strings, lists are <strong>mutable</strong>, meaning we can update them.
+    </p>
+
+    <pre>
+fruits = ["apple", "banana", "grape"]
+fruits[1] = "orange"
+
+print(fruits)
+# Now the list is: ["apple", "orange", "grape"]
+    </pre>
+
+    <p>
+        Lists also let us add, remove, and count items.  
+        Here are some useful list methods:
+    </p>
+
+    <pre>
+pets = ["dog", "cat", "bird"]
+
+pets.append("fish")     # adds "fish" to the end
+pets.remove("cat")      # removes "cat"
+numberOfDogs = pets.count("dog")  # counts how many "dog" items are in the list
+    </pre>
+
+    <p>
+        We can also use <strong>len()</strong> to find how many items are in a list.
+    </p>
+
+    <pre>
+numbers = [10, 20, 30, 40]
+length = len(numbers)   # This will be 4
+    </pre>
+
+    <p>
+        Slicing works for lists too, just like with strings.  
+        Slicing lets us take a part of the list.
+    </p>
+
+    <pre>
+colors = ["red", "blue", "green", "yellow", "purple"]
+
+someColors = colors[1:4]   # ["blue", "green", "yellow"]
+firstTwo = colors[:2]      # ["red", "blue"]
+lastThree = colors[-3:]    # ["green", "yellow", "purple"]
+    </pre>
+
+    <p>
+        Lists are one of the most useful tools in Python.  
+        They let you store many values, organize them, and work with them easily.  
+        As we continue learning, we will use lists very often, so practice reading, changing, slicing, and looping through them!
+    </p>
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 1 -->
+    <a href="/lesson/12/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

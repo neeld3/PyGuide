@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 4: While Loops in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 4: While Loops in Python</h1>
+
+    <h3>What is a while loop?</h3>
+    <p>
+        A <code>while</code> loop repeats a block of code as long as a specified condition remains <code>True</code>.
+        Unlike a <code>for</code> loop, which runs a set number of times, a <code>while</code> loop continues running
+        until some condition stops it. While loops are useful for situations where we don’t know in advance
+        how many repetitions are needed.
+    </p>
+
+    <h3>Basic while loop example</h3>
+    <pre>
+count = 0
+
+while count < 5:
+    print(count)
+    count += 1     # increment to avoid an infinite loop
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+0
+1
+2
+3
+4
+    </pre>
+
+    <h3>Using break to exit a loop</h3>
+    <p>The <code>break</code> statement stops the loop immediately when a condition is met.</p>
+    <pre>
+num = 1
+
+while num < 10:
+    if num == 5:
+        break
+    print(num)
+    num += 1
+    </pre>
+
+    <h3>Using continue to skip an iteration</h3>
+    <p>The <code>continue</code> statement skips the current loop iteration and moves to the next one.</p>
+    <pre>
+x = 0
+
+while x < 6:
+    x += 1
+    if x == 3:
+        continue
+    print(x)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+1
+2
+4
+5
+6
+    </pre>
+
+    <h3>Infinite loops</h3>
+    <p>
+        If the loop condition never becomes false, the loop will run forever. This is called an infinite loop.
+        It is usually caused by forgetting to update the condition inside the loop.
+    </p>
+    <pre>
+# WARNING: This will run forever
+while True:
+    print("Stop me with Ctrl + C")
+    </pre>
+
+    <h3>While loop with user input</h3>
+    <p>While loops are commonly used to repeatedly ask for input until the user enters a valid response.</p>
+    <pre>
+password = ""
+
+while password != "python123":
+    password = input("Enter password: ")
+
+print("Access granted!")
+    </pre>
+
+    <h3>Using while loops with lists</h3>
+    <pre>
+numbers = [10, 20, 30, 40]
+index = 0
+
+while index < len(numbers):
+    print(numbers[index])
+    index += 1
+    </pre>
+
+    <h3>Nested while loops</h3>
+    <pre>
+i = 1
+
+while i <= 3:
+    j = 1
+    while j <= 2:
+        print(i, j)
+        j += 1
+    i += 1
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+1 1
+1 2
+2 1
+2 2
+3 1
+3 2
+    </pre>
+
+    <h3>Why use while loops?</h3>
+    <p>
+        While loops are ideal when you need a loop controlled by a condition rather than a fixed number of iterations.
+        They are useful for validating input, waiting for specific events, processing data streams, and working with
+        situations where you do not know the exact number of repetitions needed in advance.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 18 -->
+    <a href="/lesson/18/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--lesson 6 from level 2, so it's lesson11-->
+<html>
+<head>
+    <title>Lesson 6: Working with Strings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 6: Working with Strings</h1>
+
+    <p>We can do a lot with strings in Python. So far we have seen that we can print strings, but there is a lot more that is possible.<br><br>
+    One thing that we can do is add strings together. For example, maybe I want to add some words together to make a sentence. I can add strings together using the plus sign.</p>
+
+    <pre>
+str1 = "I want "
+str2 = "pizza."
+str3 = "ice cream."
+print(str1 + str2)
+print(str1 + str3)
+    </pre>
+
+    <p>When run, it will look like this:</p>
+
+    <pre>
+I want pizza.
+I want ice cream.
+    </pre>
+
+    <p>If we want to turn a number into a string in order to add them together, we can turn it into a string using <code>str()</code> and put the variable that isn't a string inside. Here's an example:</p>
+
+    <pre>
+myAge = 12
+# newString = "I am " + myAge + " years old."
+# The line above causes an error! We cannot do string + integer.
+correctNewString = "I am " + str(myAge) + " years old."
+    </pre>
+
+    <p>
+        If we want to see a specific spot in a string, we can use <strong>indexing</strong>. Indexing allows us to look at a specific character. Slicing is similar, but allows us to look at a group of characters. Here are some examples of both:
+    </p>
+
+    <pre>
+myString = "This is a full sentence!"
+letterT = myString[0]
+wordThis = myString[:4]
+wordFull = myString[10:14]
+exclamationMark = myString[-1]
+    </pre>
+
+    <p>
+        Now that we've seen some examples, lets look at some rules.<br>
+        1. We can index starting at 0, which is the first character, all the way until the length of the string minus one. This is because we start indexing at 0. if we have the string <code>"hello"</code> and try to index at 5, we will get an error!<br>
+        2. Slicing is <strong>exclusive</strong> at the end. That means that the last number we include after the colon will not be added to the string. So if we slice [1:3], we will get index 1 (which is the second character because we start at 0!) and index 2, but <strong>not</strong> index 3.
+        3. If we want to start at the beginning of the string, we can leave the space before the colon empty (like this <code>[:5]</code>). If we want to go until the end, we can leave the space after the colon empty (like <code>[10:]</code>). 
+        4. We can use negative indexes! Since 0 represents the first character going from the start, our negative indexes represent going backwards starting with negative one. The second-to-last character is -2, and it just continues from there. 
+    </p>
+
+    <p>
+        There are very many string methods that we can also use with strings. Here are some examples:
+    </p>
+
+    <pre>
+shortString = "Hi!"
+length = len(shortString)
+# the len() function lets us find out how many characters are in a string.
+# here, it will return 3
+
+myString = "hello hello how are you today?"
+numberOfH = myString.count('h')
+# count will count how many of that thing exist in the string. 
+# for 'h', it will return 3.
+
+firstLetterL = myString.find('l')
+# find returns the index of the first time we find that letter. 
+# for 'l', it will give us an answer of 2 (remember that indexing starts at 0!).
+# if it doesn't find anything that it's looking for, it returns -1!
+
+capitalizedSentence = myString.capitalize()
+# capitalize returns the string with the first letter uppercase.
+# so, it will return "Hello hello how are you today?"
+    </pre>
+
+    <p>
+        You can find many more string methods within Python <a href="https://www.w3schools.com/python/python_ref_string.asp">documentation</a> if you are interested, but we will only cover these simpler ones. <br><br>
+        Let's practice with string methods with a couple questions. 
+    </p>
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 1 -->
+    <a href="/lesson/11/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

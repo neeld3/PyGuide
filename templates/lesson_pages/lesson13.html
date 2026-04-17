@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--lesson 8 from level 2, so it's lesson 13-->
+<html>
+<head>
+    <title>Lesson 8: Dictionaries in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 8: Dictionaries in Python</h1>
+
+    <p>
+        Dictionaries in Python let us store information in pairs.  
+        Each pair has a <strong>key</strong> and a <strong>value</strong>.  
+        You can think of a dictionary like a real-life dictionary:  
+        you look up a word (the key), and it gives you the meaning (the value).<br><br>
+
+        We create a dictionary using curly braces <code>{}</code> with key-value pairs separated by colons.
+    </p>
+
+    <pre>
+student = {
+    "name": "Alice",
+    "age": 11,
+    "favorite_color": "green"
+}
+    </pre>
+
+    <p>
+        To access something inside a dictionary, we use its key.  
+        Keys work like labels that point to values.
+    </p>
+
+    <pre>
+student = {"name": "Alice", "age": 11}
+
+print(student["name"])   # "Alice"
+print(student["age"])    # 11
+    </pre>
+
+    <p>
+        Unlike lists, dictionaries do <strong>not</strong> use numbers for indexing.  
+        Instead, they use whatever keys we choose: strings, numbers, or even booleans.
+    </p>
+
+    <p>
+        We can add or change items in a dictionary by assigning a value to a key.
+    </p>
+
+    <pre>
+student = {"name": "Alice", "age": 11}
+
+student["age"] = 12             # changes the age
+student["favorite_food"] = "pizza"   # adds a new key-value pair
+
+print(student)
+    </pre>
+
+    <p>
+        We can remove items too, if we no longer need them.
+    </p>
+
+    <pre>
+student = {"name": "Alice", "age": 12, "favorite_food": "pizza"}
+
+del student["favorite_food"]   # removes the key "favorite_food"
+    </pre>
+
+    <p>
+        Dictionaries also have useful methods that help us explore their data.
+    </p>
+
+    <pre>
+pet = {"type": "dog", "name": "Buddy"}
+
+keys = pet.keys()       # returns all keys
+values = pet.values()   # returns all values
+items = pet.items()     # returns key-value pairs
+    </pre>
+
+    <p>
+        Sometimes we want to check whether a key exists in the dictionary before using it.
+        We can do this with the <strong>in</strong> keyword.
+    </p>
+
+    <pre>
+student = {"name": "Alice", "age": 12}
+
+if "name" in student:
+    print("Name is in the dictionary!")
+    </pre>
+
+    <p>
+        Dictionaries are great when you want to store information about something using labels.  
+        For example:
+    </p>
+
+    <pre>
+car = {
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2020
+}
+    </pre>
+
+    <p>
+        Now you know how to create, access, change, and explore dictionaries!  
+        They are very powerful and helpful for organizing information.  
+        You will see dictionaries used everywhere in Python programs.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 1 -->
+    <a href="/lesson/13/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

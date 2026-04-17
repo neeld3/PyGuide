@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Your Avatar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .carousel-wrapper {
+            margin-top: 100px;
+            position: relative;
+            width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .avatar-display {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: 0.3s ease;
+            box-shadow: 0px 10px 35px rgba(0,0,0,0.15);
+            border: 6px solid transparent;
+        }
+
+        .avatar-display.unlocked:hover {
+            transform: scale(1.08);
+        }
+
+        .avatar-display.selected {
+            border-color: gold !important;
+            box-shadow: 0px 0px 20px gold;
+        }
+
+        .avatar-display.locked {
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
+        .arrow-btn {
+            position: absolute;
+            top: 40%;
+            padding: 15px;
+            background: #4b0082;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            user-select: none;
+        }
+
+        .arrow-btn:hover {
+            background: #360061;
+        }
+
+        #leftArrow { left: -70px; }
+        #rightArrow { right: -70px; }
+
+        .tooltip {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #888;
+            height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<h2 style="margin-top:30px;">Choose Your Avatar</h2>
+
+<div class="carousel-wrapper">
+
+    <div id="leftArrow" class="arrow-btn">‹</div>
+
+    <form id="avatarForm" method="POST" action="/select_avatar">
+        <input id="avatarInput" type="hidden" name="avatar">
+        <img id="avatarImg" src="" class="avatar-display" onclick="selectAvatar()">
+    </form>
+
+    <div id="rightArrow" class="arrow-btn">›</div>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script>
+    const avatars = {{ avatars|tojson|safe }};
+    const userScore = {{ user_score }};
+    const selectedAvatar = "{{ session_avatar }}";
+    
+    let index = avatars.findIndex(a => a.img === selectedAvatar);
+    if (index === -1) index = 0;
+    
+    const avatarImg = document.getElementById("avatarImg");
+    const avatarInput = document.getElementById("avatarInput");
+    const tooltip = document.getElementById("tooltip");
+    
+    function updateDisplay() {
+        const avatar = avatars[index];
+    
+        avatarImg.src = avatar.img;
+    
+        avatarImg.classList.toggle("selected", avatar.img === selectedAvatar);
+    
+        if (userScore < avatar.min_score) {
+            avatarImg.classList.add("locked");
+            avatarImg.classList.remove("unlocked");
+            tooltip.innerText = `🔒 Need ${avatar.min_score} points`;
+        } else {
+            avatarImg.classList.remove("locked");
+            avatarImg.classList.add("unlocked");
+            tooltip.innerText = "";
+        }
+    }
+    
+    document.getElementById("leftArrow").onclick = () => {
+        index = (index - 1 + avatars.length) % avatars.length;
+        updateDisplay();
+    };
+    
+    document.getElementById("rightArrow").onclick = () => {
+        index = (index + 1) % avatars.length;
+        updateDisplay();
+    };
+    
+    function selectAvatar() {
+        const avatar = avatars[index];
+        if (userScore >= avatar.min_score) {
+            avatarInput.value = avatar.img;
+            document.getElementById("avatarForm").submit();
+        }
+    }
+    
+    updateDisplay();
+    </script>
+    
+</body>
+</html>

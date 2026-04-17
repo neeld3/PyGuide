@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 7: Lists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 7: Lists in Python</h1>
+
+    <h3>What is a list?</h3>
+    <p>
+        A list in Python is an ordered collection of items. Lists can store multiple values in a single variable,
+        and the items can be of any data type—numbers, strings, booleans, or even other lists.
+        Lists are extremely useful for organizing and working with groups of related data.
+    </p>
+
+    <h3>Creating a list</h3>
+    <pre>
+fruits = ["apple", "banana", "cherry"]
+print(fruits)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+['apple', 'banana', 'cherry']
+    </pre>
+
+    <h3>Accessing list items</h3>
+    <p>
+        List items are accessed by index, starting at position <code>0</code>.
+    </p>
+    <pre>
+print(fruits[0])   # first item
+print(fruits[2])   # third item
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+apple
+cherry
+    </pre>
+
+    <h3>Modifying list items</h3>
+    <pre>
+fruits[1] = "blueberry"
+print(fruits)
+    </pre>
+
+    <h3>Adding items to a list</h3>
+    <pre>
+fruits.append("orange")     # adds to the end
+fruits.insert(1, "mango")   # adds at a specific index
+print(fruits)
+    </pre>
+
+    <h3>Removing items from a list</h3>
+    <pre>
+fruits.remove("apple")   # remove by value
+fruits.pop(2)            # remove by index
+print(fruits)
+    </pre>
+
+    <h3>List length</h3>
+    <pre>
+print(len(fruits))
+    </pre>
+
+    <h3>Looping through a list</h3>
+    <pre>
+for fruit in fruits:
+    print(fruit)
+    </pre>
+
+    <h3>Sorting and reversing lists</h3>
+    <pre>
+numbers = [5, 1, 8, 3, 2]
+numbers.sort()      # ascending
+print(numbers)
+
+numbers.reverse()   # reverse order
+print(numbers)
+    </pre>
+
+    <h3>Slicing lists</h3>
+    <p>We can access portions of a list using slicing.</p>
+    <pre>
+letters = ["a", "b", "c", "d", "e"]
+print(letters[1:4])   # items at index 1, 2, 3
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+['b', 'c', 'd']
+    </pre>
+
+    <h3>Checking if an item exists</h3>
+    <pre>
+if "banana" in fruits:
+    print("Banana is in the list!")
+    </pre>
+
+    <h3>Lists with multiple data types</h3>
+    <pre>
+mixed = ["text", 10, True, 4.5]
+print(mixed)
+    </pre>
+
+    <h3>Nested Lists (Lists inside lists)</h3>
+    <p>A list can contain other lists, which is useful for storing structured or grid-like data.</p>
+    <pre>
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(matrix[0][1])   # row 0, column 1
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+2
+    </pre>
+
+    <h3>List Comprehension</h3>
+    <p>
+        List comprehension provides a shorter, cleaner way to create lists using loops and expressions in a single line.
+    </p>
+
+    <pre>
+# regular loop
+squares = []
+for x in range(5):
+    squares.append(x * x)
+
+print(squares)
+    </pre>
+
+    <p>Using list comprehension:</p>
+    <pre>
+squares = [x * x for x in range(5)]
+print(squares)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+[0, 1, 4, 9, 16]
+    </pre>
+
+    <h3>List Comprehension with Condition</h3>
+    <pre>
+even_numbers = [num for num in range(10) if num % 2 == 0]
+print(even_numbers)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+[0, 2, 4, 6, 8]
+    </pre>
+
+    <h3>Why use lists?</h3>
+    <p>
+        Lists are one of the most powerful and frequently used data structures in Python.
+        They allow fast modification, easy grouping of data, and efficient processing with loops and list comprehensions.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 21 -->
+    <a href="/lesson/21/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

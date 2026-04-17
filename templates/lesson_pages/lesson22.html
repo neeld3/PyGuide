@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 8: Dictionaries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 8: Dictionaries in Python</h1>
+
+    <h3>What is a dictionary?</h3>
+    <p>
+        A dictionary in Python is a collection of key-value pairs. 
+        Each value is stored under a unique key, which we use to retrieve information.
+        Dictionaries are useful when we want to store related data together, such as a person's details or settings in a program.
+    </p>
+
+    <h3>Creating a dictionary</h3>
+    <pre>
+student = {
+    "name": "Alex",
+    "grade": 11,
+    "city": "New York"
+}
+
+print(student)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+{'name': 'Alex', 'grade': 11, 'city': 'New York'}
+    </pre>
+
+    <h3>Accessing values in a dictionary</h3>
+    <p>We access values by using their key inside square brackets.</p>
+    <pre>
+print(student["name"])
+print(student["grade"])
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Alex
+11
+    </pre>
+
+    <h3>Modifying values</h3>
+    <pre>
+student["grade"] = 12
+print(student)
+    </pre>
+
+    <h3>Adding new key-value pairs</h3>
+    <pre>
+student["GPA"] = 3.8
+print(student)
+    </pre>
+
+    <h3>Removing items</h3>
+    <pre>
+del student["city"]
+print(student)
+    </pre>
+
+    <h3>Useful dictionary methods</h3>
+    <pre>
+print(student.keys())     # list of keys
+print(student.values())   # list of values
+print(student.items())    # list of key-value pairs
+    </pre>
+
+    <h3>Looping through a dictionary</h3>
+    <pre>
+for key, value in student.items():
+    print(key, ":", value)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+name : Alex
+grade : 12
+GPA : 3.8
+    </pre>
+
+    <h3>Why use dictionaries?</h3>
+    <p>
+        Dictionaries allow us to store and access data efficiently using descriptive keys instead of numeric indexes.
+        They are useful in programs involving user profiles, settings, inventory systems, databases, JSON data, and more.
+    </p>
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 22 -->
+    <a href="/lesson/22/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

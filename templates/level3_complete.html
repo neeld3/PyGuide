@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 3 Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        body {
+            background: #f5f2ff;
+            font-family: "Inter", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .complete-card {
+            width: 70%;
+            margin: 90px auto 0 auto;
+            margin-bottom: 120px;
+            padding: 40px 45px;
+            background: linear-gradient(135deg, #6a00ff, #b44dff);
+            color: white;
+            border-radius: 22px;
+            box-shadow: 0 12px 36px rgba(120,0,255,0.35);
+            animation: fadeIn 0.6s ease;
+            line-height: 1.6;
+        }
+
+        .complete-card h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .complete-card p {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            text-align: left;
+            width: 70%;
+            margin: 20px auto;
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        .link-btn {
+            display: inline-block;
+            margin: 15px 12px;
+            padding: 14px 28px;
+            background: white;
+            color: #5c00c7;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<div class="complete-card">
+    <h1>🎉 Congratulations! 🎉</h1>
+
+    <p>You’ve completed <strong>all levels</strong> of PyGuide - that’s an amazing achievement!</p>
+    <p>You’ve built strong Python fundamentals and you're ready for more advanced learning!</p>
+
+    <p style="margin-top:25px;">
+        Here are some great next steps to continue your coding journey:
+    </p>
+
+    <ul>
+        <li>📘 <a href="https://www.learnpython.org" target="_blank" style="color:#ffe7ff;">LearnPython.org – Interactive Python practice</a></li>
+        <li>🐍 <a href="https://realpython.com" target="_blank" style="color:#ffe7ff;">Real Python – High-quality tutorials</a></li>
+        <li>💡 <a href="https://leetcode.com" target="_blank" style="color:#ffe7ff;">LeetCode – Problem-solving & interview prep</a></li>
+        <li>🚀 <a href="https://www.freecodecamp.org" target="_blank" style="color:#ffe7ff;">freeCodeCamp – Full web & Python courses</a></li>
+        <li>📚 <a href="https://automatetheboringstuff.com" target="_blank" style="color:#ffe7ff;">Automate the Boring Stuff – Real projects</a></li>
+    </ul>
+
+    <p style="margin-top:20px;">
+        Best of luck - you’re off to an incredible start! ✨
+    </p>
+
+    <a href="{{ url_for('display_lessons') }}" class="link-btn">
+        🔙 Back to Lessons
+    </a>
+</div>
+
+</body>
+</html>

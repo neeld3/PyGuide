@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--LEVEL 2 LESSON 2 so it's lesson 7 in the grand scheme of things-->
+<html>
+<head>
+    <title>Lesson 2: Printing in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>
+        Lesson 2: Variables in Python
+    </h1>
+    <p>
+        What is a variable?<br><br>
+        A variable is like a specific space in a computer's storage where it can store information for us.<br>
+        We can put something inside that space, give it a name, and then use that name later in our program.<br><br>
+        Why do we use variables?<br>
+        Variables help us remember information while our program is running.<br>
+        For example, a variable can remember a number, a word, or even whether something is true or false.<br>
+        They make our code easier to read and easier to change.<br>
+        Different kinds of variables<br><br>
+    </p>
+    <h3>
+        1. String Variables
+    </h3>
+    <p>
+        A string is text. It can be a word, a sentence, or even a single letter.
+        We put string text inside quotation marks.<br>
+        Example:<br><br>
+    </p>
+
+    <pre>
+name = "Alice"
+print(name)
+    </pre>
+
+    <h3>
+        2. Integer variables
+    </h3>
+    <p>
+        An integer is a whole number. It has no decimal point. We use integers for things like counting or keeping score.<br>
+        Example:<br><br>
+    </p>
+    <pre>
+score = 10
+print(score)
+    </pre>
+
+    <h3>
+        3. Float variables
+    </h3>
+    <p>
+        A float is a number with a decimal point. Floats are useful for measurements, prices, or anything that is not a whole number.<br>
+        Example:<br><br>
+    </p>
+    <pre>
+temperature = 23.5
+print(temperature)
+    </pre>
+
+    <h3>
+        4. Boolean variables
+    </h3>
+    <p>
+        A boolean stores either True or False. These are helpful when our program needs to make decisions.<br>
+        Example:<br><br>
+    </p>
+    <pre>
+is_raining = False
+print(is_raining)
+    </pre>
+    <h3>
+        Putting it all together
+    </h3>
+    <p>
+        Here is a short program that uses different kinds of variables at the same time:<br><br>
+    </p>
+    <pre>
+name = "Sam"
+age = 8
+height = 1.3
+likes_coding = True
+print(name)
+print(age)
+print(height)
+print(likes_coding)
+    </pre>
+
+    <p>
+        Try it yourself!<br>
+        Make your own variables by choosing a name and giving it a value.<br>
+        You can make variables for things like your favorite food, your age, the number of pets you have, or whether you like ice cream.<br>
+        Then print them to see what Python remembers for you.<br><br>
+        Let's practice with variables. <br>
+
+    </p>
+
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 1 -->
+    <a href="/lesson/7/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson {{ lesson_id }} — Question {{ qnum }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+
+    <style>
+        .question-box {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .options label {
+            display: block; margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .submit-btn, .run-btn, .hint-btn {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        .hint-btn {
+            background: #ffb300;
+        }
+        .bottom-nav {
+            width: 85%; margin: 30px auto;
+            display: flex; justify-content: space-between;
+        }
+        .nav-btn {
+            background: #4b0082; color: white;
+            padding: 10px 20px; border-radius: 8px;
+            text-decoration: none; font-weight: 600;
+        }
+
+        #editor {
+            height: 220px;
+            border: 2px solid #cfc7ff;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        #error-box {
+            background: #ffdddd;
+            border-left: 6px solid red;
+            padding: 10px;
+            display: none;
+            white-space: pre-wrap;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        #hint-box {
+            display:none;
+            margin-top:12px;
+            padding:12px;
+            background:#fff5d1;
+            border-left:5px solid #ffb300;
+            border-radius:10px;
+        }
+
+        .ai-btn {
+            background: #6a00ff;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: 0.2s ease;
+        }
+        .ai-btn:hover {
+            transform: scale(1.05);
+            background: #5200cc;
+        }
+
+        .ai-response {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f4e6ff;
+            border-left: 5px solid #9700ff;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+
+<div class="question-box">
+    <h2>Question {{ qnum }}</h2>
+
+    <p>{{ question.text }}</p>
+
+    <form method="POST" id="question-form">
+        
+        {% if question.type == "mcq" %}
+            <div class="options">
+                {% for key, option in question.options.items() %}
+                    <label>
+                        <input type="radio" name="answer" value="{{ key }}">
+                        {{ option }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if question.type == "code" %}
+            <div id="editor"></div>
+            <textarea id="code-output" name="answer" style="display:none;"></textarea>
+
+            <button type="button" class="run-btn" onclick="runCode()">▶ Run</button>
+            <button type="button" class="hint-btn" onclick="showHint()">💡 Show Hint</button>
+            <button type="button" id="ask-ai-btn" class="ai-btn">🤖 Ask AI for Help</button>
+
+            <div id="ai-response" class="ai-response" style="display:none;"></div>
+
+
+            <div id="error-box"></div>
+            <div id="hint-box">{{ question.hint }}</div>
+
+            <script>
+                require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs' }});
+                require(['vs/editor/editor.main'], function () {
+                    window.editor = monaco.editor.create(document.getElementById('editor'), {
+                        value: `{{ question.starter | safe if question.starter else "" }}`,
+                        language: 'python',
+                        theme: 'vs-dark',
+                        fontSize: 16,
+                        minimap: { enabled: false },
+                        automaticLayout: true
+                    });
+                });
+
+                function syncCode() {
+                    document.getElementById("code-output").value = window.editor.getValue();
+                }
+
+                function runCode() {
+                    syncCode();
+                    document.getElementById("question-form").submit();
+                }
+
+                function showHint() {
+                    document.getElementById("hint-box").style.display = "block";
+                }
+            </script>
+            <script>
+                document.getElementById("ask-ai-btn").addEventListener("click", async () => {
+                    const code = editor.getValue();   // Ace editor code
+                    const question = "{{ question.text }}";
+                    const test = `{{ question.test }}`;
+                
+                    const responseBox = document.getElementById("ai-response");
+                    responseBox.style.display = "block";
+                    responseBox.innerHTML = "Thinking… 🤖";
+                
+                    const reply = await fetch("/ai_help", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ code, question, test })
+                    });
+                
+                    const data = await reply.json();
+                    responseBox.innerHTML = data.reply;
+                });
+                </script>
+                
+        {% endif %}
+
+        <button class="submit-btn" type="submit" onclick="syncCode()">Submit</button>
+    </form>
+
+    {% if user_answer %}
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+        {% if is_correct %}
+            <p class="correct">Correct! 🎉</p>
+            <script>
+                confetti({
+                  particleCount: 80,
+                  spread: 70,
+                  origin: { y: 0.6 }
+                });
+            </script>
+        {% else %}
+            <p class="incorrect">Incorrect. Try again.</p>
+
+            {% if error_message %}
+            <script>
+                document.getElementById("error-box").style.display = "block";
+                document.getElementById("error-box").innerText = {{ error_message|tojson }};
+            </script>
+            {% endif %}
+        {% endif %}
+
+        <p><strong>Explanation:</strong> {{ question.explanation }}</p>
+    {% endif %}
+
+</div>
+
+<div class="bottom-nav">
+    <a class="nav-btn" href="/lesson/{{ lesson_id }}/question/{{ qnum - 1 }}">← Previous</a>
+    <a class="nav-btn" href="/lesson/{{ lesson_id }}/question/{{ qnum + 1 }}">Next →</a>
+</div>
+
+</body>
+</html>

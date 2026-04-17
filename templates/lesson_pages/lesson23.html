@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 9: Functions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 9: Functions in Python</h1>
+
+    <h3>What is a function?</h3>
+    <p>
+        A function is a reusable block of code that performs a specific task. Instead of rewriting the same code many times,
+        we define a function once and call it whenever needed. Functions help keep programs organized, efficient, and easier to debug.
+    </p>
+
+    <h3>How to define a function</h3>
+    <pre>
+def greet():
+    print("Hello from a function!")
+    </pre>
+
+    <h3>Calling a function</h3>
+    <pre>
+greet()
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Hello from a function!
+    </pre>
+
+    <h3>Understanding parameters</h3>
+    <p>
+        Parameters allow us to pass information into a function so it can use different values each time it runs.
+        The values we supply when calling a function are called <b>arguments</b>.
+    </p>
+
+    <pre>
+def say_hello(name):
+    print("Hello, " + name + "!")
+
+say_hello("Alex")   # Alex is the argument
+say_hello("Maya")   # Maya is the argument
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Hello, Alex!
+Hello, Maya!
+    </pre>
+
+    <h3>Parameters vs. Arguments</h3>
+    <ul>
+        <li><b>Parameters</b>: variables listed in the function definition</li>
+        <li><b>Arguments</b>: actual values passed when calling the function</li>
+    </ul>
+
+    <h3>Functions with multiple parameters</h3>
+    <pre>
+def multiply(a, b):
+    return a * b
+
+print(multiply(4, 6))
+    </pre>
+    <p>Output:</p>
+    <pre>
+24
+    </pre>
+
+    <h3>Default parameter values</h3>
+    <p>
+        Parameters can have default values, which are used if no argument is provided.
+    </p>
+    <pre>
+def welcome(name="Guest"):
+    print("Welcome,", name)
+
+welcome()          # uses default value
+welcome("Will")    # overrides default
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Welcome, Guest
+Welcome, Will
+    </pre>
+
+    <h3>Keyword vs. positional arguments</h3>
+    <p>
+        Arguments can be passed by position or by specifying the parameter name.
+    </p>
+
+    <pre>
+def introduce(name, age):
+    print(f"{name} is {age} years old.")
+
+introduce("Sarah", 17)           # positional
+introduce(age=18, name="Daniel") # keyword
+    </pre>
+
+    <h3>Returning Multiple Values</h3>
+    <pre>
+def get_stats():
+    return 90, 85, 88   # returns a tuple
+
+math, english, science = get_stats()
+print(math, english, science)
+    </pre>
+
+    <h3>Variable Scope</h3>
+    <p>
+        Variables created inside a function are <b>local</b> and only accessible within that function.
+        Variables outside a function are <b>global</b>.
+    </p>
+
+    <pre>
+x = 10   # global variable
+
+def show():
+    y = 5  # local variable
+    print(x, y)
+
+show()
+print(x)    # works
+print(y)    # error, y does not exist outside the function
+    </pre>
+
+    <h3>Lambda (Anonymous) Functions</h3>
+    <p>
+        A lambda function is a short, one-line function without a name.
+        They are often used when a simple function is needed temporarily.
+    </p>
+
+    <pre>
+square = lambda num: num * num
+print(square(6))
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+36
+    </pre>
+
+    <h3>Common Mistakes with Functions</h3>
+    <ul>
+        <li>Forgetting to call the function using <code>()</code></li>
+        <li>Returning a value but forgetting to store or print it</li>
+        <li>Not matching the number of parameters and arguments</li>
+    </ul>
+
+    <h3>Why Functions Matter</h3>
+    <p>
+        Functions are essential in real-world programming. They allow us to break programs into logical parts,
+        improve maintainability, avoid repeating code, and build complex systems from smaller building blocks.
+    </p>
+    <p>
+        Without functions, even small programs quickly become messy and difficult to manage.
+    </p>
+</div>
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 23 -->
+    <a href="/lesson/23/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

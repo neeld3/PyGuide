@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<div class="profile-container">
+
+    <h1 class="profile-title-main">Profile Settings</h1>
+
+    <div class="profile-top">
+        <div class="avatar-block">
+            <img src="{{ user['Avatar'] }}" class="profile-avatar">
+
+
+            <a href="/avatars" class="change-avatar-btn">Change Avatar</a>
+        </div>
+
+        <div class="stats-block">
+            <h2 class="profile-rank">{{ title }}</h2>
+            <p class="profile-score">Score: <strong>{{ user['Score'] }}</strong></p>
+
+            <p class="badges-label">Your Badges</p>
+
+            {% if badges %}
+                <div class="badges-grid">
+                    {% for b in badges %}
+                        <div class="badge-pill badge-hover tooltip" data-tip="{{ b.desc }}">
+                            <span class="badge-icon">{{ b.icon }}</span>
+                            <span class="badge-name">{{ b.name }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="badges-empty">Complete lessons to earn badges!</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <form action="{{ url_for('profile') }}" method="POST" class="profile-form">
+
+        <div class="profile-field">
+            <label>Name:</label>
+            <input type="text" name="fullname" value="{{ user['FullName'] }}" required>
+        </div>
+
+        <div class="profile-field">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ user['Email'] }}" required>
+        </div>
+
+        <div class="profile-field">
+            <label>Username:</label>
+            <input type="text" name="username" value="{{ user['Username'] }}" required>
+        </div>
+
+        <div class="profile-field">
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter new password">
+        </div>
+
+        <button class="save-btn" type="submit">Save Changes</button>
+    </form>
+
+    <a href="/lessons" class="back-home">Back to Home</a>
+</div>
+
+
+<style>
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f7f5ff;
+}
+
+.profile-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: fadeIn 0.4s ease;
+}
+
+.profile-title-main {
+    text-align: center;
+    font-size: 34px;
+    color: #3b0075;
+    margin-bottom: 35px;
+}
+
+.profile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 35px;
+}
+
+.avatar-block {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #6a00ff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    transition: transform 0.25s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.08);
+}
+
+.change-avatar-btn {
+    margin-top: 14px;
+    display: inline-block;
+    background: #ff9900;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s;
+}
+
+.change-avatar-btn:hover {
+    background: #d27e00;
+    transform: translateY(-3px);
+}
+
+.badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.badge-pill {
+    background: #faf7ff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #e8dfff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+    transition: transform 0.25s ease;
+}
+
+.badge-hover:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.tooltip {
+    position: relative;
+}
+.tooltip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-field input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border 0.2s ease;
+}
+
+.profile-field input:focus {
+    border-color: #6a00ff;
+    outline: none;
+}
+
+.save-btn {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #4b0082;
+    color: white;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.save-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.back-home {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #4b0082;
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+</body>
+</html>

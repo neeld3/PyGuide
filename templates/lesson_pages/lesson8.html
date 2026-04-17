@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--lesson 8 which is lesson 3 of level 2-->
+<html>
+<head>
+    <title>Lesson 3: Comparisons and Conditionals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+
+    <h1>Lesson 3: Comparisons and Conditionals</h1>
+
+    <p>
+        What are comparisons?<br><br>
+        Sometimes we want the computer to compare two or more things and tell us whether something is true or false.<br>
+        A comparison checks how two values relate to each other.<br>
+        When we compare things, Python gives us either True or False.<br><br>
+
+        Common comparison signs:<br>
+        == means equal to<br>
+        != means not equal to<br>
+        &gt; means greater than<br>
+        &lt; means less than<br>
+        &gt;= means greater than or equal to<br>
+        &lt;= means less than or equal to<br><br>
+
+        Examples:<br><br>
+    </p>
+
+    <pre>
+print(5 > 3)      # This will show True
+print(2 == 4)     # This will show False
+print("cat" != "dog")   # This will show True
+    </pre>
+
+    <p>
+        We can also use additional words along with comparisons. The words <code>not</code>, <code>and</code>, and <code>or</code> are helpful and happen in that order. So the "order of operations" (like PEMDAS in math) is:<br>
+        Math operations (+, -, *, etc.)<br>
+        Comparisons (==, <, etc.)<br>
+        not<br>
+        and<br>
+        or<br><br>
+        Parenthesis will always come first, just like in regular math expressions!
+    </p>
+
+    <h3>What are conditionals?</h3>
+
+    <p>
+        A conditional is a way to tell the computer:<br>
+        "If something is true, do this. Otherwise, do something else."<br><br>
+        In Python we use the word <strong>if</strong>.<br>
+        We can also use <strong>else</strong> for what should happen when the condition is not true.<br><br>
+        Example:<br><br>
+    </p>
+
+    <pre>
+age = 10
+
+if age >= 10:
+    print("You are at least ten.")
+else:
+    print("You are younger than ten.")
+    </pre>
+
+    <h3>How conditionals work</h3>
+
+    <p>
+        Python checks the condition after the word if.<br><br>
+        If the condition is True, it runs the code under if.<br><br>
+        If the condition is False, it runs the code under else (if there is an else).<br><br>
+    </p>
+
+    <p>More examples:<br><br></p>
+
+    <pre>
+temperature = 30
+
+if temperature > 25:
+    print("It is warm outside.")
+else:
+    print("It is not very warm.")
+
+name = "Alice"
+
+if name == "Alice":
+    print("Hello, Alice!")
+else:
+    print("Hello, stranger.")
+    </pre>
+
+    <h3>Using if-elif-else</h3>
+
+    <p>
+        Sometimes we need more than just one if and one else.<br>
+        We may want the computer to check several different conditions, one after another.<br>
+        For this, Python uses <strong>elif</strong>, which means "else if."<br><br>
+
+        Python reads them in order:<br>
+        It checks the if condition first.<br><br>
+        If that is not true, it checks the elif condition.<br><br>
+        If none of the conditions are true, it runs the else part (if there is one).<br><br>
+
+        Example:<br><br>
+    </p>
+
+    <pre>
+score = 85
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+else:
+    print("Grade: D")
+    </pre>
+
+    <p>
+        In this program, Python looks at each condition from top to bottom until it finds one that is true.<br>
+        Once it finds a true condition, it runs that block of code and ignores the rest.<br><br>
+    </p>
+
+    <p>Another example:<br><br></p>
+
+    <pre>
+color = "green"
+
+if color == "red":
+    print("Stop.")
+elif color == "yellow":
+    print("Slow down.")
+elif color == "green":
+    print("Go.")
+else:
+    print("Unknown color.")
+    </pre>
+
+    <h3>Using comparisons and conditionals together</h3>
+
+    <p>
+        Comparisons help us ask questions.<br>
+        Conditionals let the computer answer those questions with actions.<br><br>
+
+        Try it yourself!<br>
+        Think of something you want the computer to check.<br>
+        For example, you can check if a number is bigger than another number, if two words match, or if someone's score is high enough to win.<br>
+        Then write an if statement that prints different messages depending on the answer.<br><br>
+    </p>
+
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+    <a href="/lesson/8/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

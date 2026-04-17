@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 4: While Loops</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 4: While Loops</h1>
+
+    <h3>What is a while loop?</h3>
+    <p>A <b>while loop</b> is a way to tell the computer: “Keep doing this over and over as long as something is true.”  
+    It's like saying, “While it's still daytime, keep playing outside.”</p>
+
+    <h3>What does a while loop look like?</h3>
+    <p>Here is the correct Python syntax:</p>
+
+    <pre>
+while condition:
+    # repeat this block
+    </pre>
+
+    <p>The word <b>while</b> must be lowercase, and the line must end with a colon (<b>:</b>).</p>
+
+    <h3>A simple example</h3>
+    <p>Let's count from 1 to 5 using a while loop:</p>
+
+    <pre>
+counter = 1
+
+while counter <= 5:
+    print(counter)
+    counter = counter + 1
+    </pre>
+
+    <p>This loop prints numbers 1 through 5. After each loop, we add 1 to <b>counter</b> so the loop eventually stops.</p>
+
+    <h3>Why do we need to change a variable?</h3>
+    <p>If we don't change the variable used in the condition, the loop might run forever!  
+    This is called an <b>infinite loop</b>, and it happens when the condition never becomes false.</p>
+
+    <pre>
+# WARNING: Infinite loop example
+number = 1
+
+while number < 5:
+    print("This will never stop!")
+    # number never changes here!
+    </pre>
+
+    <p>Because <b>number</b> never increases, it is always less than 5 — so the loop goes on forever.</p>
+
+    <h3>How to avoid infinite loops</h3>
+    <p>To keep loops safe and working correctly, always make sure the condition can eventually become false.  
+    Most loops use something like:</p>
+
+    <pre>
+counter = counter + 1
+    </pre>
+
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 4 -->
+    <a href="/lesson/4/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

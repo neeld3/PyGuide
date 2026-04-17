@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 1: Printing in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 1: Printing in Python</h1>
+
+    <h3>What does <code>print()</code> do?</h3>
+    <p>
+        The <code>print()</code> function is used to display information on the screen.
+        It is one of the most commonly used functions in Python and is essential for testing,
+        debugging, and interacting with users.
+    </p>
+
+    <h3>Basic printing</h3>
+    <pre>
+print("Hello, world!")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Hello, world!
+    </pre>
+
+    <h3>Printing variables</h3>
+    <pre>
+name = "Alex"
+age = 17
+
+print(name)
+print(age)
+print("Name:", name, "- Age:", age)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Alex
+17
+Name: Alex - Age: 17
+    </pre>
+
+    <h3>Printing multiple values</h3>
+    <p>
+        We can print multiple items by separating them with commas. Python automatically adds
+        a space between each value.
+    </p>
+    <pre>
+print("Apples:", 5, "Oranges:", 3)
+    </pre>
+
+    <h3>Using formatted strings (f-strings)</h3>
+    <p>
+        F-strings offer a clean and modern way to format printed text. They allow variables to be embedded
+        directly inside the string using curly braces <code>{}</code>.
+    </p>
+    <pre>
+name = "Maya"
+grade = 12
+
+print(f"{name} is in grade {grade}.")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Maya is in grade 12.
+    </pre>
+
+    <h3>Using escape characters</h3>
+    <p>
+        Escape characters help format text inside strings.
+    </p>
+    <pre>
+print("Line 1\nLine 2")   # new line
+print("He said, \"Hello!\"")  # quotation marks
+print("Path: C:\\Users\\Alex") # backslash
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Line 1
+Line 2
+He said, "Hello!"
+Path: C:\Users\Alex
+    </pre>
+
+    <h3>Changing the ending and separator</h3>
+    <pre>
+# sep changes the separation between printed items
+print("A", "B", "C", sep="-")
+
+# end changes what appears at the end instead of a newline
+print("Loading", end="...")
+print("Done!")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+A-B-C
+Loading...Done!
+    </pre>
+
+    <h3>Why printing is important</h3>
+    <p>
+        Printing allows us to understand what our program is doing at each step,
+        display results, debug errors, interact with users, and monitor data.
+        It is one of the most essential tools when learning to program.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 1 -->
+    <a href="/lesson/15/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

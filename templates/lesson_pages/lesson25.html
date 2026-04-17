@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 11: Object Oriented Programming (OOP)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 11: Object-Oriented Programming (OOP)</h1>
+
+    <h3>What is Object-Oriented Programming?</h3>
+    <p>
+        Object-Oriented Programming (OOP) is a programming style that organizes code into <b>objects</b>, which bundle together data and behavior.
+        Instead of writing large blocks of procedural code, OOP models real-world concepts as objects with properties and actions.
+    </p>
+
+    <p>For example, if we were modeling a student, we might store information like their name and grade, and give them functions like <code>study()</code> or <code>submit_homework()</code>.</p>
+
+    <h3>The Four Pillars of OOP</h3>
+    <ul>
+        <li><b>Encapsulation</b>: bundling data and methods inside a class, controlling access to protect information</li>
+        <li><b>Abstraction</b>: hiding complex details and exposing only what is necessary to the user</li>
+        <li><b>Inheritance</b>: allowing one class to receive attributes and methods from another class, enabling code reuse</li>
+        <li><b>Polymorphism</b>: methods can behave differently depending on the object using them, enabling flexibility and customization</li>
+    </ul>
+
+    <h3>Key OOP Terms</h3>
+    <ul>
+        <li><b>Class</b> : a blueprint or template for creating objects</li>
+        <li><b>Object</b> : an instance of a class</li>
+        <li><b>Attribute</b> : a variable that stores data within an object</li>
+        <li><b>Method</b> : a function defined inside a class that describes an object's behavior</li>
+    </ul>
+
+    <h3>Example: Creating a Class and an Object</h3>
+    <pre>
+class Student:
+    def __init__(self, name, grade):   # constructor
+        self.name = name               # attribute
+        self.grade = grade             # attribute
+
+    def display_info(self):
+        print(f"Name: {self.name}, Grade: {self.grade}")
+
+student1 = Student("Alex", 11)
+student2 = Student("Maya", 12)
+
+student1.display_info()
+student2.display_info()
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Name: Alex, Grade: 11
+Name: Maya, Grade: 12
+    </pre>
+
+    <h3>Example: Inheritance</h3>
+    <pre>
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+class Teacher(Person):                  # inherits from Person
+    def teach(self):
+        print(f"{self.name} is teaching now.")
+
+teacher1 = Teacher("Mr. Johnson")
+teacher1.teach()
+    </pre>
+
+    <h3>Encapsulation Example</h3>
+    <pre>
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance     # private variable
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+    </pre>
+
+    <h3>Why OOP matters in real applications</h3>
+    <p>
+        OOP is widely used in modern software development. It is foundational in game engines, web applications, mobile apps,
+        user interface frameworks, and large-scale engineering projects. Many languages support OOP, including Python, Java,
+        C++, C#, and Swift.
+    </p>
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 25 -->
+    <a href="/lesson/25/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

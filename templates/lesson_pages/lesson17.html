@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 3: Conditionals in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 3: Conditionals in Python</h1>
+    <h3>What are conditionals?</h3>
+    <p>
+        Conditionals allow a program to make decisions based on certain conditions.
+        They let code run differently depending on whether something is true or false.
+        In Python, we use <code>if</code>, <code>elif</code>, and <code>else</code> to control program flow.
+    </p>
+
+    <h3>Basic if statement</h3>
+    <pre>
+age = 18
+
+if age >= 18:
+    print("You are an adult.")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+You are an adult.
+    </pre>
+
+    <h3>if-else statement</h3>
+    <pre>
+temperature = 45
+
+if temperature > 50:
+    print("It's warm outside.")
+else:
+    print("It's cold outside.")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+It's cold outside.
+    </pre>
+
+    <h3>if-elif-else chain</h3>
+    <pre>
+score = 85
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+else:
+    print("Grade: D or below")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Grade: B
+    </pre>
+
+    <h3>Using logical operators</h3>
+    <p>We can combine conditions using <code>and</code>, <code>or</code>, and <code>not</code>.</p>
+    <pre>
+age = 20
+has_id = True
+
+if age >= 18 and has_id:
+    print("Entry allowed.")
+else:
+    print("Entry denied.")
+    </pre>
+
+    <h3>Checking membership with <code>in</code></h3>
+    <pre>
+colors = ["red", "blue", "green"]
+
+if "blue" in colors:
+    print("Blue is available.")
+    </pre>
+
+    <h3>Nested conditionals</h3>
+    <pre>
+x = 10
+
+if x > 0:
+    print("Positive number")
+    if x % 2 == 0:
+        print("Even number")
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Positive number
+Even number
+    </pre>
+
+    <h3>Conditional expressions (Ternary operator)</h3>
+    <p>Python also supports a short form of conditional statements on one line.</p>
+    <pre>
+age = 17
+message = "Adult" if age >= 18 else "Minor"
+print(message)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+Minor
+    </pre>
+
+    <h3>Why use conditionals?</h3>
+    <p>
+        Conditionals allow programs to react to different situations, validate data, enforce rules,
+        and respond to user choices. They are essential for real-world programs such as games,
+        websites, mobile apps, and automation systems.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 17 -->
+    <a href="/lesson/17/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 5: For Loops in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 5: For Loops in Python</h1>
+
+    <h3>What is a for loop?</h3>
+    <p>
+        A <code>for</code> loop lets us repeat a block of code multiple times. It is commonly used to iterate over
+        items in a sequence, such as lists, strings, or ranges of numbers. For loops are essential for processing data,
+        automation, and performing repeated actions efficiently.
+    </p>
+
+    <h3>Basic for loop example</h3>
+    <pre>
+for i in range(5):
+    print(i)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+0
+1
+2
+3
+4
+    </pre>
+
+    <h3>Looping through a list</h3>
+    <pre>
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(fruit)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+apple
+banana
+cherry
+    </pre>
+
+    <h3>Looping through a string</h3>
+    <pre>
+word = "Python"
+
+for letter in word:
+    print(letter)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+P
+y
+t
+h
+o
+n
+    </pre>
+
+    <h3>Using range() in loops</h3>
+    <p>
+        <code>range()</code> generates a sequence of numbers. It can take up to three arguments:
+        <code>range(start, stop, step)</code>.
+    </p>
+    <pre>
+for x in range(1, 10, 2):
+    print(x)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+1
+3
+5
+7
+9
+    </pre>
+
+    <h3>Using break in a loop</h3>
+    <p>Exits the loop early when a condition is met.</p>
+    <pre>
+for num in range(10):
+    if num == 5:
+        break
+    print(num)
+    </pre>
+
+    <h3>Using continue in a loop</h3>
+    <p>Skips the current iteration and continues to the next one.</p>
+    <pre>
+for num in range(6):
+    if num == 3:
+        continue
+    print(num)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+0
+1
+2
+4
+5
+    </pre>
+
+    <h3>Nested for loops</h3>
+    <p>
+        We can place a loop inside another loop, useful for working with multi-dimensional data.
+    </p>
+    <pre>
+for i in range(3):
+    for j in range(2):
+        print(i, j)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+0 0
+0 1
+1 0
+1 1
+2 0
+2 1
+    </pre>
+
+    <h3>Looping with indexes using enumerate()</h3>
+    <pre>
+colors = ["red", "green", "blue"]
+
+for index, color in enumerate(colors):
+    print(index, color)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+0 red
+1 green
+2 blue
+    </pre>
+
+    <h3>Looping through a dictionary</h3>
+    <pre>
+student = {"name": "Alex", "grade": 11, "GPA": 3.8}
+
+for key, value in student.items():
+    print(key, ":", value)
+    </pre>
+
+    <h3>Why use for loops?</h3>
+    <p>
+        For loops are essential for automation, searching, sorting, collecting input, analyzing data, and building programs
+        that scale. They allow us to write efficient, clean code instead of repeating lines manually.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 19 -->
+    <a href="/lesson/19/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

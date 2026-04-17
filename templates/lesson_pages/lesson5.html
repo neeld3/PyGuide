@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 5: For Loops</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+
+    <h1>Lesson 5: For Loops</h1>
+
+    <h3>What is a for loop?</h3>
+    <p>
+        A <strong>for loop</strong> lets the computer repeat something a certain number of times, or go through each item in a collection like a list or a string.<br><br>
+        It’s like saying: “For each item, do this.”
+    </p>
+
+    <h3>What can a for loop go through?</h3>
+    <p>
+        A for loop can iterate through <strong>any iterable collection</strong>.  
+        That means things like:
+        <ul>
+            <li>lists</li>
+            <li>strings</li>
+            <li>ranges (made with <code>range()</code>)</li>
+        </ul>
+        For example, if you loop through a string, you get each character.  
+        If you loop through a list, you get each item.
+    </p>
+
+    <h3>What does a for loop look like?</h3>
+    <p>The correct Python syntax is:</p>
+
+    <pre>
+for item in collection:
+    # repeat this block
+    </pre>
+
+    <p>Most loops use <code>range()</code> to repeat a certain number of times:</p>
+
+    <pre>
+for i in range(5):
+    print(i)
+    </pre>
+
+    <p>This will print the numbers 0, 1, 2, 3, and 4.</p>
+
+    <h3>Examples of for loops</h3>
+
+    <p>Looping through a list:</p>
+
+    <pre>
+fruits = ["apple", "banana", "grape"]
+
+for fruit in fruits:
+    print(fruit)
+    </pre>
+
+    <p>Looping through a string:</p>
+
+    <pre>
+for letter in "cat":
+    print(letter)
+    </pre>
+
+    <p>Looping using range:</p>
+
+    <pre>
+for i in range(3):
+    print(i)
+    </pre>
+
+    <p>This loop prints:</p>
+
+    <pre>
+0
+1
+2
+    </pre>
+
+    <p>We can even include conditionals like if statements inside for loops, like this:</p>
+
+    <pre>
+for i in range(5):
+    if i > 1 and i < 4:
+        print(i)
+    </pre>
+
+    <p>Which will print this:</p>
+
+    <pre>
+2
+3
+    </pre>
+
+    <h3>Why use for loops?</h3>
+    <p>
+        For loops are great when you know how many times you want to repeat something, or when you want to go through every element in a list or string.<br>
+        They help programs run faster and keep your code neat and organized.
+    </p>
+
+</div>
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+    <a href="/lesson/5/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson {{ lesson_id }} Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        body {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .complete-box {
+            width: 80%;
+            margin: 40px auto;
+            background: #f0fdf4;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #86efac;
+            text-align: center;
+
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+        }
+
+        .complete-title {
+            font-size: 34px;
+            font-weight: 800;
+            color: #166534;
+            margin-bottom: 18px;
+        }
+
+        .bouncy-btn {
+            background: #4b0082;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 12px;
+            display: inline-block;
+
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+
+        .bouncy-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+        }
+
+        .bouncy-btn:active {
+            animation: bounce 0.4s ease;
+        }
+
+        @keyframes bounce {
+            0%   { transform: translateY(0); }
+            30%  { transform: translateY(6px); }
+            60%  { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<div class="complete-box">
+    <div class="complete-title">🎉 Great job!</div>
+    <p>You finished Lesson {{ display_num }}.</p>
+    <p>You can now move on to Lesson {{ display_num + 1 }}.</p>
+
+    <a class="bouncy-btn" href="/lessons">Back to Lessons</a>
+    <a class="bouncy-btn" href="/lesson/{{ lesson_id + 1 }}">Go to Lesson {{ display_num + 1 }} →</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+    window.onload = () => {
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.3 }
+        });
+
+        setTimeout(() => {
+            confetti({
+                particleCount: 120,
+                spread: 100,
+                origin: { y: 0.3 }
+            });
+        }, 500);
+    };
+</script>
+
+</body>
+</html>

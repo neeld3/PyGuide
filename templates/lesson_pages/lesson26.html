@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 12: Printing in Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+
+    <style>
+        /* Content Box */
+        .lesson-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #f9f7ff;
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 2px solid #d7cffc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Title spacing */
+        .lesson-container h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons row */
+        .bottom-buttons {
+            width: 85%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background: #4b0082;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #380062;
+        }
+
+        /* Test Yourself Button */
+        .btn-test {
+            background: #ff9900;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .btn-test:hover {
+            background: #cc7a00;
+        }
+
+        pre {
+            background: #eeeaff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            border-left: 4px solid #a18bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'components/header.html' %}
+
+
+<!-- LESSON BOX -->
+<div class="lesson-container">
+    <h1>Lesson 12: Recursion in Python</h1>
+
+    <h3>What is recursion?</h3>
+    <p>
+        Recursion is a programming technique where a function calls <b>itself</b> to solve a problem.  
+        The idea is to break a large problem into smaller, simpler versions of the same problem, and keep doing that until we reach a case that can be solved directly.
+    </p>
+
+    <h3>The two key components of recursion</h3>
+    <ul>
+        <li><b>Base case</b>: the stopping point of the recursion; a condition where the function no longer calls itself.</li>
+        <li><b>Recursive case</b>: the part of the function where it calls itself with a smaller or simpler input.</li>
+    </ul>
+
+    <h3>Example: Countdown</h3>
+    <pre>
+def countdown(n):
+    if n == 0:          # base case
+        print("Liftoff!")
+    else:               # recursive case
+        print(n)
+        countdown(n - 1)
+
+countdown(3)
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+3
+2
+1
+Liftoff!
+    </pre>
+
+    <h3>Example: Factorial</h3>
+    <p>
+        The factorial of a number <code>n</code> (written <code>n!</code>) is the product of all positive integers from <code>n</code> down to 1.  
+        For example, <code>5! = 5 x 4 x 3 x 2 x 1</code>.
+    </p>
+
+    <pre>
+def factorial(n):
+    if n == 0:          # base case
+        return 1
+    else:               # recursive case
+        return n * factorial(n - 1)
+
+print(factorial(5))
+    </pre>
+
+    <p>Output:</p>
+    <pre>
+120
+    </pre>
+
+    <h3>Why use recursion?</h3>
+    <p>
+        Recursion allows us to write elegant solutions for problems that involve repeated patterns or structures.  
+        It is especially useful in algorithms involving trees, searching, sorting, and dividing problems into smaller subproblems.
+    </p>
+</div>
+
+
+
+<!-- BUTTONS ROW -->
+<div class="bottom-buttons">
+    <a href="/lessons" class="btn-back">Back</a>
+
+    <!-- Will take user to questions for lesson 26 -->
+    <a href="/lesson/26/question/1" class="btn-test">Test Yourself →</a>
+</div>
+
+</body>
+</html>
